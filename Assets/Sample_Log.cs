@@ -8,19 +8,23 @@ public class Sample_Log : MonoBehaviour {
 	void Start () {
 		LLog.Init (isDebug);
 
-		LLog.Warn("some warning log");
-		LLog.Error("some error log");
+		LLog.Error ("some error log");
+		LLog.Warn ("some warning log");
+		LLog.Log ("some normal debug log");
+		LLog.Trace ("log util");
 
-		LLog.Blue("data","log data");
-		LLog.Gray("asset","log asset");
-		LLog.Gray("ui","log ui");
-		LLog.Green("scene","log scene");
-		LLog.Green("flow","log flow");
-		LLog.Trace("util","log util");
-		LLog.Orange("test","log test");
+		LLog.Gray ("log asset");
+		LLog.White ("log asset");
+		LLog.Green ("log flow");
+		LLog.Blue ("log data");
+		LLog.Orange ("log test");
+		LLog.Red ("log flow");
 
-		LLog.Trace("map","log map");
-		LLog.Trace("battle","log battle");
-		LLog.Trace("nav","log nav");
+		LLog.Gray_Tag ("asset", "log asset");
+		LLog.White_Tag ("asset", "log asset");
+		LLog.Green_Tag ("flow", "log flow");
+		LLog.Blue_Tag ("data", "log data");
+		LLog.Orange_Tag ("test", "log test");
+		LLog.Red_Tag ("flow", "log flow");
 	}
 }
