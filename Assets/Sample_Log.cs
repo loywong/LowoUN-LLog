@@ -1,4 +1,4 @@
-﻿//注意: 需要添加脚本编译宏 PROJECT_LOG
+﻿//注意: 需要添加脚本编译宏 PROJECT_LOG_TEST_TEMP
 
 using LowoUN.Util;
 using UnityEngine;

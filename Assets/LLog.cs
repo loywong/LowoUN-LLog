@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 色彩使用建议:
+// Gray 数量多，不重要的信息
+// White 数量多，重要信息
+// Green 流程控制相关
+// Blue 数据相关
+// Orange 警告性质，或者特别提醒
+// Red 错误性质，或者特别严重的提醒
+
 namespace LowoUN.Util {
 	public static class LLog {
 		// 是否允许Unity运行时日志
