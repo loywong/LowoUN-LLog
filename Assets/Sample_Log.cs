@@ -11,7 +11,6 @@ public class Sample_Log : MonoBehaviour {
 		LLog.Error ("some error log");
 		LLog.Warn ("some warning log");
 		LLog.Log ("some normal debug log");
-		LLog.Trace ("log util");
 
 		LLog.Gray ("log asset");
 		LLog.White ("log asset");

@@ -73,104 +73,117 @@ namespace LowoUN.Util {
 			// Debug.Log("tag:"+tag);
 		}
 
-		// Error和Warn不需要标签
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		// Only Online Production -----------------------------------------------------------------------------
+		#if !VER_PRODUCTION
+		public static void NOT_PRODUCTION_ERROR (params object[] msg) {
+			Debug.LogError ("【!VER_PRODUCTION】" + ParseMsg (msg));
+		}
+		public static void NOT_PRODUCTION_WARN (params object[] msg) {
+			Debug.LogWarning ("【!VER_PRODUCTION】" + ParseMsg (msg));
+		}
+		public static void NOT_PRODUCTION_LOG (params object[] msg) {
+			string color = "eeeeee";
+			object msg2 = ParseMsg (msg);
+			Debug.Log ("<color=#" + color + ">" + "【!VER_PRODUCTION】" + msg2 + "</color>");
+		}
+		#endif
+
+		// Only Editor 环境 ------------------------------------------------------------------------------------
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Error (params object[] msg) {
 			if (!isOpen) return;
 
-			Debug.LogError ("【非生产环境测试】" + ParseMsg (msg));
+			Debug.LogError ("【Only Editor】" + ParseMsg (msg));
 		}
-
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Warn (params object[] msg) {
 			if (!isOpen) return;
 
-			Debug.LogWarning ("【非生产环境测试】" + ParseMsg (msg));
+			Debug.LogWarning ("【Only Editor】" + ParseMsg (msg));
 		}
-
-		[System.Diagnostics.Conditional ("PROJECT_LOG")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Log (params object[] msg) {
 			if (!isOpen) return;
 
-			Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
+			Debug.Log ("【Only Editor】" + ParseMsg (msg));
 		}
 
-		[System.Diagnostics.Conditional ("PROJECT_LOG")]
-		public static void Print (params object[] msg) {
-			if (!isOpen) return;
+		// [System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		// public static void Print (params object[] msg) {
+		// 	if (!isOpen) return;
 
-			Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
-		}
+		// 	Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
+		// }
 
-		[System.Diagnostics.Conditional ("PROJECT_LOG")]
-		public static void Console (params object[] msg) {
-			if (!isOpen) return;
+		// [System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		// public static void Console (params object[] msg) {
+		// 	if (!isOpen) return;
 
-			Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
-		}
+		// 	Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
+		// }
 
-		[System.Diagnostics.Conditional ("PROJECT_LOG")]
-		public static void Output (params object[] msg) {
-			if (!isOpen) return;
+		// [System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		// public static void Output (params object[] msg) {
+		// 	if (!isOpen) return;
 
-			Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
-		}
+		// 	Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
+		// }
 
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
-		public static void Trace (params object[] msg) {
-			if (!isOpen) return;
+		// [System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		// public static void Trace (params object[] msg) {
+		// 	if (!isOpen) return;
 
-			Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
-		}
+		// 	Debug.Log ("【非生产环境测试】" + ParseMsg (msg));
+		// }
 
 		// Colorful No Tag -----------------------------------------------------------------
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Gray (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "606060");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void White (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "FFFFFF");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Green (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "90FF81");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Blue (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "3A5FCD");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Orange (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "FFAE00");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Red (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "FF5C95");
 		}
 
 		// Colorful & Tag ------------------------------------------------------------------
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Gray_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "606060");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void White_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "FFFFFF");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Green_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "90FF81");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Blue_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "3A5FCD");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Orange_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "FFAE00");
 		}
-		[System.Diagnostics.Conditional ("PROJECT_LOG_TEST_TEMP")]
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Red_Tag (string tag, params object[] msg) {
 			HandleWithTagAndColor (tag, ParseMsg (msg), "FF5C95");
 		}
@@ -206,7 +219,7 @@ namespace LowoUN.Util {
 		}
 
 		// 解第二层
-		// [System.Diagnostics.Conditional("PROJECT_LOG_TEST_TEMP")]
+		// [System.Diagnostics.Conditional("PROJECT_LOG_EDITOR")]
 		private static string GetString (object msg) {
 			string detail = "";
 			if (msg is ICollection)
@@ -217,7 +230,7 @@ namespace LowoUN.Util {
 			return detail;
 		}
 
-		// [System.Diagnostics.Conditional("PROJECT_LOG_TEST_TEMP")]
+		// [System.Diagnostics.Conditional("PROJECT_LOG_EDITOR")]
 		private static string Stringify (ICollection col) {
 			var str = "";
 			var isFirst = true;
