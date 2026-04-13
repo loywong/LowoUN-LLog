@@ -690,7 +690,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: PROJECT_LOG_TEST_TEMP
+    Standalone: PROJECT_LOG_EDITOR
   additionalCompilerArguments:
     Standalone: []
   platformArchitecture: {}

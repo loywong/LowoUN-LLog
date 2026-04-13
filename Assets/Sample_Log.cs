@@ -8,6 +8,12 @@ public class Sample_Log : MonoBehaviour {
 	void Start () {
 		LLog.Init (isDebug);
 
+		// 只有在生产环境失效
+		LLog.NOT_PRODUCTION_ERROR ("NOT_PRODUCTION_ERROR");
+		LLog.NOT_PRODUCTION_WARN ("NOT_PRODUCTION_WARN");
+		LLog.NOT_PRODUCTION_LOG ("NOT_PRODUCTION_LOG");
+
+		// 只要非Editor环境就失效
 		LLog.Error ("some error log");
 		LLog.Warn ("some warning log");
 		LLog.Log ("some normal debug log");
