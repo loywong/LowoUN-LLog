@@ -4,11 +4,16 @@ using UnityEngine;
 
 // 色彩使用建议:
 // Gray 数量多，不重要的信息
-// White 数量多，重要信息
-// Green 流程控制相关
-// Blue 数据相关
+// White -- 普通log 数量少，重要提醒
+// Gray -- 普通log 数量多，一般信息
+// Green/Flow 流程控制相关
+// Blue/Data 数据相关, 包含 Profile & Config & Settings
 // Orange 警告性质，或者特别提醒
 // Red 错误性质，或者特别严重的提醒
+
+// 模式 ----------------------------------------------------------------------
+// 1 PROJECT_LOG_NOT_PRODUCTION 只适用于 非线上正式服环境下 的日志输出
+// 2 PROJECT_LOG_EDITOR 只适用于Editor环境下的开发日志输出
 
 namespace LowoUN.Util {
 	public static class LLog {
@@ -143,22 +148,30 @@ namespace LowoUN.Util {
 
 		// Colorful No Tag -----------------------------------------------------------------
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
-		public static void Gray (params object[] msg) {
-			HandleWithColor (ParseMsg (msg), "606060");
+		public static void White (params object[] msg) {
+			HandleWithColor (ParseMsg (msg), "FFFFFF");
 		}
 
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
-		public static void White (params object[] msg) {
-			HandleWithColor (ParseMsg (msg), "FFFFFF");
+		public static void Gray (params object[] msg) {
+			HandleWithColor (ParseMsg (msg), "606060");
 		}
 
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Green (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "90FF81");
 		}
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		public static void Flow (params object[] msg) {
+			HandleWithColor (ParseMsg (msg), "90FF81");
+		}
 
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
 		public static void Blue (params object[] msg) {
+			HandleWithColor (ParseMsg (msg), "3A5FCD");
+		}
+		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
+		public static void Data (params object[] msg) {
 			HandleWithColor (ParseMsg (msg), "3A5FCD");
 		}
 
@@ -174,13 +187,13 @@ namespace LowoUN.Util {
 
 		// Colorful & Tag ------------------------------------------------------------------
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
-		public static void Gray_Tag (string tag, params object[] msg) {
-			HandleWithTagAndColor (tag, ParseMsg (msg), "606060");
+		public static void White_Tag (string tag, params object[] msg) {
+			HandleWithTagAndColor (tag, ParseMsg (msg), "FFFFFF");
 		}
 
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
-		public static void White_Tag (string tag, params object[] msg) {
-			HandleWithTagAndColor (tag, ParseMsg (msg), "FFFFFF");
+		public static void Gray_Tag (string tag, params object[] msg) {
+			HandleWithTagAndColor (tag, ParseMsg (msg), "606060");
 		}
 
 		[System.Diagnostics.Conditional ("PROJECT_LOG_EDITOR")]
